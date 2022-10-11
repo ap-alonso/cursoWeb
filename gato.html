@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Juego Gato</title>
+</head>
+<style>
+    .bloqGeneral{ width: 100%; display: flex; flex-wrap: wrap; justify-content: center; text-align: center;}
+    .bloq50{width: 50%; margin: 2% auto;display: flex; flex-wrap: wrap;justify-content: center; text-align: center; }
+    #bloqCasillas{ background-color: #cccccc40;  border: red 2px solid;}
+    .casilla { width: 16%; height: 50px; margin: 2% 2%; padding: 2% 4%;}
+    .casilla input {height: 80% !important;width: 70%; font-size: 28px; font-weight: bold; text-align: center; }
+</style>
+<body>
+<div id="bloqGeneral" class="bloqGeneral">
+<div id="bloqTitulo" class="bloq50">Gato</div>
+<div id="bloqCasillas" class="bloq50"></div>
+<div id="bloqResultado" class="bloq50"></div>
+</div>
+</body>
+<script>
+    let casillas= 9, turnoConta=1;
+    let win00 =[   
+            [1, 2, 3],
+            [4, 5, 6],
+            [7, 8, 9],
+            [1, 4, 7],
+            [2, 5, 8],
+            [3, 6, 9],
+            [1, 5, 9],
+            [3, 5, 7]
+         ]
+    consCasilla(casillas);
+    obtenerValores(casillas);
+    function consCasilla(num){
+        for (let a = 0; a < num; a++) {
+            aa=a+1;
+            $('#bloqCasillas').append('<div class="casilla"><input type="text" id="casilla_'+aa+'" ></div>');
+        }
+    }
+    function obtenerValores(num){
+        $(document).ready(function () {
+            for (let a = 0; a < num; a++) {
+                aa = a + 1;
+                $('#casilla_' + aa).change(function () {
+                    var x = $(this).val();
+                    turnoConta++;
+                    if (turnoConta % 2 == 0) {
+                       $('#bloqCasillas').css('border-color', 'blue');
+                        $(this).val('X');
+                        revisaCasillas02();
+                    } else {
+                        $('#bloqCasillas').css('border-color','red');
+                        $(this).val('O');
+                        revisaCasillas02();
+                    }
+                });
+            }
+        });
+    }
+    function revisaCasillas02(){
+        for (let a = 0; a < win00.length; a++) {
+              val00 = $('#casilla_' + win00[a][0].toString()).val();
+              val01 = $('#casilla_' + win00[a][1].toString()).val();
+              val02 = $('#casilla_' + win00[a][2].toString()).val();
+              impre('val00: ' + val00 + '\nval01: ' + val01 + '\nval02: ' + val02);
+            if ((val00!='' && val01 != '' && val02 != '') && (val00 == val01 && val00 == val02 && val01 == val02)) {
+                $('#bloqResultado').html('El ganador es: ' + val00);
+            }
+        }
+    };
+    function impre(elemento) {
+            console.log(elemento);
+        }
+
+</script>
+
+</html>
