@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"">
+    </script>
+    <title>Personas</title>
+<h3> Datos de persona</h3>
+<br>
+<div id="bloqueGeneral">
+    <div id="personas"></div>
+</div>
+
+</head>
+<body>
+    
+</body>
+
+<script>
+
+  
+
+arrayDatosHumanos=[
+    {"nombre" : "jersay","edad" :"30" ,"sexo" : "masculino"},
+    {"nombre" : "alejandro","edad" :"36" ,"sexo" : "masculino"},
+    {"nombre" : "janet","edad" :"29" ,"sexo" : "femenino"},
+    {"nombre" : "jorge","edad" :"38" ,"sexo" : "no binario"},
+    {"nombre" : "Andres","edad" :"60" ,"sexo" : "Masculino"},
+];
+
+
+    console.log(arrayDatosHumanos[0].nombre);
+   // $('#personas').html('hola')
+    for (let a = 0; a < arrayDatosHumanos.length; a++) {
+        console.log(arrayDatosHumanos[a].nombre);
+        console.log(a);
+        $('#personas').append(arrayDatosHumanos[a].nombre + ', ' );
+        
+    }
+    //$('#personas').html(arrayDatosHumanos[2])
+
+    $('#personas').append(arrayDatosHumanos.nombre);
+
+</script>
+</html>

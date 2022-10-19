@@ -65,7 +65,7 @@ function dias02(numeroDeDia) {
   impre("Fecha Resultado");
   impre(diaResultado + "-" + mesResultado + "-2022");
 }
-dias02(342);
+dias02(15);
 
 function impre(elemento) {
   console.log(elemento);
