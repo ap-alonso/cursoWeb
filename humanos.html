@@ -1,44 +1,56 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js">
     </script>
     <title>Personas</title>
-<h3> Datos de persona</h3>
-<br>
+</head>
+<body>    
 <div id="bloqueGeneral">
     <div id="personas"></div>
 </div>
-
-</head>
-<body>
-    
 </body>
 
 <script>
-
-  
-
 arrayDatosHumanos=[
-    {"nombre" : "jersay","edad" :"30" ,"sexo" : "masculino"},
-    {"nombre" : "alejandro","edad" :"36" ,"sexo" : "masculino"},
-    {"nombre" : "janet","edad" :"29" ,"sexo" : "femenino"},
-    {"nombre" : "jorge","edad" :"38" ,"sexo" : "no binario"},
-    {"nombre" : "Andres","edad" :"60" ,"sexo" : "Masculino"},
+    {"nombre" : "jersay","edad" :30 ,"sexo" : "masculino"},
+    {"nombre" : "alejandro","edad" :36 ,"sexo" : "masculino"},
+    {"nombre" : "janet","edad" :29 ,"sexo" : "femenino"},
+    {"nombre" : "Jess","edad" :23 ,"sexo" : "femenino"},
+    {"nombre" : "Andres","edad" :60 ,"sexo" : "Masculino"},
 ];
-
-
-    console.log(arrayDatosHumanos[0].nombre);
-   // $('#personas').html('hola')
-    for (let a = 0; a < arrayDatosHumanos.length; a++) {
-        console.log(arrayDatosHumanos[a].nombre);
-        console.log(a);
-        $('#personas').append(arrayDatosHumanos[a].nombre + ', ' );
-        
+    let arrayEdades=[];
+    let arrayGenero=[];
+    let totalEdades=0;
+    let totalMas;
+    recorreArray(arrayDatosHumanos, arrayEdades, arrayGenero);
+    
+    function recorreArray(arrayH, arrayE, arrayG) {
+        impre('recorreArray');
+    //foreach arrayDatosHumanos
+    jQuery.each(arrayH, function (i, x) {
+    impre('Pos: ' + i + ', Nombre: '+ x.nombre +', Edad:' + x.edad + ', Sexo: ' + x.sexo);
+    // Inserta las edades en el array arrayEdades
+    arrayE.push(x.edad);
+    // Inserta los generos en el array arrayGeneros si son femeninos
+    if(x.sexo=='femenino'){
+        arrayG.push(x.sexo);
     }
-    //$('#personas').html(arrayDatosHumanos[2])
+        });
+      totalMas= arrayH.length - arrayG.length;
+      impre('En el arrego Existen: '+totalMas+' hombres y ' +arrayG.length +' mujeres' ); 
 
-    $('#personas').append(arrayDatosHumanos.nombre);
+        // for arrayEdades
+        for (let a = 0; a < arrayE.length; a++) {
+                totalEdades += arrayE[a];
+                }
+                impre('El total de años de los humanos es: ' + totalEdades);
 
+            }
+
+// Función console.log
+function impre(elemento) {
+  console.log(elemento);
+}
 </script>
 </html>
